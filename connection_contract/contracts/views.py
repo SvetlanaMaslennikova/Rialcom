@@ -9,7 +9,6 @@ from rest_framework.response import Response
 
 from .models import Contract, ConnectionAddress
 from .serializers import ContractModelSerializer, ConnectionAddressModelSerializer
-from rest_framework.views import APIView
 
 
 class ContractPaginator(LimitOffsetPagination):
@@ -25,4 +24,3 @@ class ContractModelViewSet(ModelViewSet):
 class ConnectionAddressModelViewSet(ModelViewSet):
     queryset = ConnectionAddress.objects.all()
     serializer_class = ConnectionAddressModelSerializer
-

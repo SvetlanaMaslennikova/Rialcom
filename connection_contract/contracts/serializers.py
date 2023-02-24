@@ -9,5 +9,7 @@ class ContractModelSerializer(ModelSerializer):
 
 
 class ConnectionAddressModelSerializer(ModelSerializer):
-    model = ConnectionAddress
-    fields = '__all__'
+
+    class Meta:
+        model = ConnectionAddress
+        fields = '__all__'
