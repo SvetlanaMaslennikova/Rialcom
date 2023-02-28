@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+
 from contracts.views import ContractModelViewSet, ConnectionAddressModelViewSet
 
 router = DefaultRouter()

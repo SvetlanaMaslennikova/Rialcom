@@ -1,15 +1,17 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, HyperlinkedModelSerializer
 from .models import Contract, ConnectionAddress
 
 
-class ContractModelSerializer(ModelSerializer):
-    class Meta:
-        model = Contract
-        fields = '__all__'
-
-
-class ConnectionAddressModelSerializer(ModelSerializer):
+class ConnectionAddressModelSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = ConnectionAddress
+        fields = '__all__'
+
+
+class ContractModelSerializer(HyperlinkedModelSerializer):
+    address = ConnectionAddressModelSerializer()
+
+    class Meta:
+        model = Contract
         fields = '__all__'

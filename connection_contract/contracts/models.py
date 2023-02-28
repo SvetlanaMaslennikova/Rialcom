@@ -2,24 +2,6 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
 
-class Contract(models.Model):
-    last_name = models.CharField(max_length=64, verbose_name='Фамилия')
-    first_name = models.CharField(max_length=64, verbose_name='Имя')
-    surname = models.CharField(max_length=64, verbose_name='Отчество')
-    created_date = models.DateField(null=True, blank=True, verbose_name='Дата создания')
-    conclusion_date = models.DateField(null=True, blank=True, verbose_name='Дата заключения')
-    phone = PhoneNumberField(unique=True, null=False, blank=False, verbose_name='Телефон')
-    email = models.EmailField(max_length=254, blank=True, verbose_name='Email')
-    address = models.ForeignKey(
-        'ConnectionAddress',
-        on_delete=models.CASCADE,
-    )
-
-    class Meta:
-        verbose_name = 'Договор'
-        verbose_name_plural = 'Договора'
-
-
 class ConnectionAddress(models.Model):
     city = models.CharField(max_length=60, verbose_name='Город')
     street = models.CharField(max_length=60, verbose_name='Улица')
@@ -30,4 +12,25 @@ class ConnectionAddress(models.Model):
     class Meta:
         verbose_name = 'Адрес подключения'
         verbose_name_plural = 'Адреса подключения'
+
+
+class Contract(models.Model):
+    last_name = models.CharField(max_length=64, verbose_name='Фамилия')
+    first_name = models.CharField(max_length=64, verbose_name='Имя')
+    surname = models.CharField(max_length=64, verbose_name='Отчество')
+    created_date = models.DateField(null=True, blank=True, verbose_name='Дата создания')
+    conclusion_date = models.DateField(null=True, blank=True, verbose_name='Дата заключения')
+    phone = PhoneNumberField(unique=True, null=False, blank=False, verbose_name='Телефон')
+    email = models.EmailField(max_length=254, blank=True, verbose_name='Email')
+    address = models.ForeignKey(
+        ConnectionAddress,
+        on_delete=models.CASCADE,
+    )
+
+    class Meta:
+        verbose_name = 'Договор'
+        verbose_name_plural = 'Договора'
+
+
+
 
