@@ -1,11 +1,11 @@
 from rest_framework.viewsets import ModelViewSet
-from .models import Contract, ConnectionAddress
-from .serializers import ContractModelSerializer, ConnectionAddressModelSerializer
+from .models import Contract, Address
+from .serializers import ContractModelSerializer, AddressModelSerializer
 
 
-class ConnectionAddressModelViewSet(ModelViewSet):
-    queryset = ConnectionAddress.objects.all()
-    serializer_class = ConnectionAddressModelSerializer
+class AddressModelViewSet(ModelViewSet):
+    queryset = Address.objects.all()
+    serializer_class = AddressModelSerializer
 
 
 class ContractModelViewSet(ModelViewSet):
